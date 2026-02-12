@@ -22,4 +22,17 @@ public class StringServiceTests
 
         Assert.Equal(expected, result);
     }
+    
+    [Theory]
+    [InlineData("Hello World", "World Hello")]
+    [InlineData("hello", "hello")]
+    [InlineData("  Hello   World  ", "World Hello")]
+    [InlineData("one two three", "three two one")]
+    [InlineData("", "")]
+    [InlineData("   ", "   ")]
+    public void ReverseWords_WithVariousInputs_ReturnsExpectedResult(string? input, string? expected)
+    {
+        var result = _stringService.ReverseWords(input);
+        Assert.Equal(expected, result);
+    }
 }
